@@ -100,6 +100,8 @@ namespace WebApiContatos.Controllers
         {
             string connect = _configuration.GetConnectionString("AgendaDB");
 
+            List<Retorno> listaRetorno = new List<Retorno>();
+
             using (SqlConnection con = new SqlConnection(connect))
             {
                 SqlCommand cmd = new SqlCommand("stp_Contatos_Ins", con)
@@ -115,17 +117,31 @@ namespace WebApiContatos.Controllers
                 cmd.Parameters.AddWithValue("@Email", contato.Email);
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+                
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    Retorno retorno = new Retorno
+                    {
+                        RetornoMensagem = Convert.ToInt32(rdr["Retorno"])
+                    };
+
+                    listaRetorno.Add(retorno);
+                }
+
                 con.Close();
             }
 
-            return new JsonResult("Added Successfully");
+            return new JsonResult(listaRetorno);
         }
 
         [HttpPut]
-        public void Edit(Contato contato)
+        public JsonResult Edit(Contato contato)
         {
             string connect = _configuration.GetConnectionString("AgendaDB");
+
+            List<Retorno> listaRetorno = new List<Retorno>();
 
             using (SqlConnection con = new SqlConnection(connect))
             {
@@ -143,15 +159,31 @@ namespace WebApiContatos.Controllers
                 cmd.Parameters.AddWithValue("@Email", contato.Email);
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    Retorno retorno = new Retorno
+                    {
+                        RetornoMensagem = rdr["Retorno"].ToString()
+                    };
+
+                    listaRetorno.Add(retorno);
+                }
+
                 con.Close();
             }
+
+            return new JsonResult(listaRetorno);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int? id)
+        public JsonResult Delete(int? id)
         {
             string connect = _configuration.GetConnectionString("AgendaDB");
+
+            List<Retorno> listaRetorno = new List<Retorno>();
 
             using (SqlConnection con = new SqlConnection(connect))
             {
@@ -164,9 +196,23 @@ namespace WebApiContatos.Controllers
                 cmd.Parameters.AddWithValue("@idPessoa", id);
 
                 con.Open();
-                cmd.ExecuteNonQuery();
+
+                SqlDataReader rdr = cmd.ExecuteReader();
+
+                while (rdr.Read())
+                {
+                    Retorno retorno = new Retorno
+                    {
+                        RetornoMensagem = rdr["Retorno"].ToString()
+                    };
+
+                    listaRetorno.Add(retorno);
+                }
+
                 con.Close();
             }
+
+            return new JsonResult(listaRetorno);
         }
     }
 }
