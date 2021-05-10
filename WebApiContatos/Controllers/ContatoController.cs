@@ -28,7 +28,7 @@ namespace WebApiContatos.Controllers
 
             using (SqlConnection con = new SqlConnection(connect))
             {
-                SqlCommand cmd = new SqlCommand("stp_Contato_Sel", con)
+                SqlCommand cmd = new SqlCommand("stp_Contatos_Sel", con)
                 {
                     CommandType = CommandType.StoredProcedure,
                     CommandTimeout = 60
@@ -65,7 +65,7 @@ namespace WebApiContatos.Controllers
 
             using (SqlConnection con = new SqlConnection(connect))
             {
-                SqlCommand cmd = new SqlCommand("stp_Contato_Sel_Id", con)
+                SqlCommand cmd = new SqlCommand("stp_Contatos_Sel_Id", con)
                 {
                     CommandType = CommandType.StoredProcedure,
                     CommandTimeout = 60
@@ -102,7 +102,7 @@ namespace WebApiContatos.Controllers
 
             using (SqlConnection con = new SqlConnection(connect))
             {
-                SqlCommand cmd = new SqlCommand("stp_Contato_Ins", con)
+                SqlCommand cmd = new SqlCommand("stp_Contatos_Ins", con)
                 {
                     CommandType = CommandType.StoredProcedure,
                     CommandTimeout = 60
@@ -129,7 +129,7 @@ namespace WebApiContatos.Controllers
 
             using (SqlConnection con = new SqlConnection(connect))
             {
-                SqlCommand cmd = new SqlCommand("stp_Contato_Upd", con)
+                SqlCommand cmd = new SqlCommand("stp_Contatos_Upd", con)
                 {
                     CommandType = CommandType.StoredProcedure,
                     CommandTimeout = 60
@@ -148,13 +148,14 @@ namespace WebApiContatos.Controllers
             }
         }
 
+        [HttpDelete("{id}")]
         public void Delete(int? id)
         {
             string connect = _configuration.GetConnectionString("AgendaDB");
 
             using (SqlConnection con = new SqlConnection(connect))
             {
-                SqlCommand cmd = new SqlCommand("stp_Contato_Del", con)
+                SqlCommand cmd = new SqlCommand("stp_Contatos_Del", con)
                 {
                     CommandType = CommandType.StoredProcedure,
                     CommandTimeout = 60
