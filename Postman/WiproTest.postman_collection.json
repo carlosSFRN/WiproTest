@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "60f5362b-6dc1-49e6-9b9a-f0c41e7717d2",
+		"name": "WiproTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lista Contatos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44373/api/contato",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44373",
+					"path": [
+						"api",
+						"contato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Cadastra contato",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Josuelson\",\r\n    \"dataNascimento\": \"2021-05-11\",\r\n    \"observacoes\" : \"contato importante\",\r\n    \"Telefone\" : \"84827564123\",\r\n    \"email\" : \"sergio@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44373/api/contato",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44373",
+					"path": [
+						"api",
+						"contato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contato",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idPessoa\" : 19,\r\n    \"nome\": \"Joaozin\",\r\n    \"dataNascimento\": \"2021-05-09\",\r\n    \"observacoes\" : \"contato importante\",\r\n    \"Telefone\" : \"84999164550\",\r\n    \"email\" : \"sergio@hotmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:44373/api/contato",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44373",
+					"path": [
+						"api",
+						"contato"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deleta Contato",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44373/api/contato/19",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44373",
+					"path": [
+						"api",
+						"contato",
+						"19"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Contatos Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:44373/api/contato/8",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "44373",
+					"path": [
+						"api",
+						"contato",
+						"8"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
