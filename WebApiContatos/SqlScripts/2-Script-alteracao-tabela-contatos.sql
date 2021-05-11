@@ -1,0 +1,5 @@
+USE AgendaDB
+
+ALTER TABLE Contatos ADD 
+telefone VARCHAR(11) NOT NULL,
+email VARCHAR (200) NOT NULL
